@@ -5,28 +5,42 @@ import org.junit.jupiter.api.Test;
 public class ValidatorTests {
 
     @Test
-    public void FourDigitsShouldReturnTrue() {
-        assertTrue(Validator.hasCorrectNumberOfDigits(1234, 4));
+    public void CorrectLengthShouldReturnTrue() {
+        assertTrue(Validator.hasCorrectLength("1234", 4));
     }
 
     @Test
-    public void ThreeDigitsShouldReturnFalse() {
-        assertFalse(Validator.hasCorrectNumberOfDigits(123, 4));
+    public void ShorterLengthShouldReturnFalse() {
+        assertFalse(Validator.hasCorrectLength("123", 4));
     }
 
     @Test
-    public void FiveDigitsShouldReturnFalse() {
-        assertFalse(Validator.hasCorrectNumberOfDigits(12345, 4));
+    public void LongerLengthShouldReturnFalse() {
+        assertFalse(Validator.hasCorrectLength("12345", 4));
     }
 
     @Test
-    public void NoDuplicateDigitsShouldReturnFalse() {
-        assertFalse(Validator.hasDuplicateDigits(1234));
+    public void NoDuplicatesShouldReturnFalse() {
+        assertFalse(Validator.hasDuplicates("1234"));
     }
 
     @Test
-    public void DuplicateDigitsShouldReturnTrue() {
-        assertTrue(Validator.hasDuplicateDigits(1224));
+    public void HasDuplicatesShouldReturnTrue() {
+        assertTrue(Validator.hasDuplicates("1224"));
     }
 
+    @Test
+    public void isAllDigitsShouldReturnTrue() {
+        assertTrue(Validator.isAllDigits("1234"));
+    }
+
+    @Test
+    public void isFloatShouldReturnFalse() {
+        assertFalse(Validator.isAllDigits("12.34"));
+    }
+
+    @Test
+    public void isStringShouldReturnFalse() {
+        assertFalse(Validator.isAllDigits("Ok la"));
+    }
 }

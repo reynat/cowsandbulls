@@ -3,17 +3,16 @@ import java.util.Set;
 
 public class Validator {
 
-    public static boolean hasCorrectNumberOfDigits(int input, int length) {
-        String[] stringArray = String.valueOf(input).split("");
-        return stringArray.length == length;
+    public static boolean hasCorrectLength(String input, int length) {
+        String[] inputArray = input.split("");
+        return inputArray.length == length;
     }
 
-    public static boolean hasDuplicateDigits(int input) {
-        String digits = String.valueOf(input);
-        return hasDuplicateLetters(digits);
+    public static boolean isAllDigits(String input) {
+        return input.matches("^[0-9]+");
     }
 
-    public static boolean hasDuplicateLetters(String input) {
+    public static boolean hasDuplicates(String input) {
         String[] letters = String.valueOf(input).split("");
         Set<String> store = new HashSet<>();
 
