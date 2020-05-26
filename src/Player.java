@@ -1,7 +1,7 @@
 public class Player {
 
     public Secret makeASecret() {
-        return new Secret("123");
+        return new Secret(123);
     }
 
 }
