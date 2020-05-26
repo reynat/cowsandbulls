@@ -38,4 +38,11 @@ public class SecretTest {
         Secret actual = new Secret(12345);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void cannotMakeSecretShorterThanFourDigits() {
+        Secret expected = new Secret(123);
+        Secret actual = new Secret(1230);
+        assertEquals(expected, actual);
+    }
 }
