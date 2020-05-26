@@ -1,33 +1,35 @@
 public class Secret {
-	private int digits;
+
+	private String digits;
 	private final int LENGTH_OF_DIGITS = 4;
 
-	public Secret(int digits) {
+	public Secret(String digits) {
 		// Either pad or remove digits to enforce length of 4
 		this.digits = create4DigitSecret(digits);
 	}
 
 	@Override
 	public boolean equals(Object other) {
-		return other instanceof Secret && this.getDigits() == ((Secret) other).getDigits();
+		return other instanceof Secret && this.getDigits().equals(((Secret) other).getDigits());
 	}
 
-	public int getDigits() {
+	public String getDigits() {
 		// Ensures that the digits returned are in the format we want others to see
 		return this.digits;
 	}
 
-	private int create4DigitSecret(int digits) {
-		String digitsAsAString = String.valueOf(digits);
-		
-		if (digitsAsAString.length() < LENGTH_OF_DIGITS) {
-			digitsAsAString = String.format("%-" + Integer.toString(LENGTH_OF_DIGITS) + "s", digitsAsAString).replace(' ', '0');
+	private String create4DigitSecret(String digits) {
+
+		String onlyDigits = digits.replaceAll("[^0-9]", "");
+
+		if (onlyDigits.length() < LENGTH_OF_DIGITS) {
+			return String.format("%-" + Integer.toString(LENGTH_OF_DIGITS) + "s", onlyDigits).replace(' ', '0');
 		}
 		
-		if (digitsAsAString.length() > LENGTH_OF_DIGITS) {
-			digitsAsAString = digitsAsAString.substring(0, LENGTH_OF_DIGITS);
+		if (onlyDigits.length() > LENGTH_OF_DIGITS) {
+			return onlyDigits.substring(0, LENGTH_OF_DIGITS);
 		}
 
-		return Integer.valueOf(digitsAsAString);
+		return onlyDigits;
 	}
 };
