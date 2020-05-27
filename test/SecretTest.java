@@ -41,11 +41,11 @@ public class SecretTest {
 
     @Test
     public void cannotMakeSecretShorterThanFourDigits() {
-        Secret expected = new Secret("123");
-        Secret actual = new Secret("1230");
+        Secret expected = new Secret("1230");
+        Secret actual = new Secret("123");
         assertEquals(expected, actual);
     }
-
+    
     @Test
     public void cannotMakeSecretWithLetters() {
         Secret expected = new Secret("1230");
