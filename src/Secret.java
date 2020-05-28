@@ -3,12 +3,12 @@ public class Secret {
 
 	class Digits {
 
-		public String digits; 
+		public String value; 
 		private int length;
 
 		public Digits(String newDigits, int length) {
 			this.length = length;
-			this.digits = createDigits(newDigits);
+			this.value = createDigits(newDigits);
 		}
 
 		private String createDigits(String digits) {
@@ -47,6 +47,6 @@ public class Secret {
 
 	public String getDigits() {
 		// Ensures that the digits returned are in the format we want others to see
-		return this.digits.digits;
+		return this.digits.value;
 	}
 };
