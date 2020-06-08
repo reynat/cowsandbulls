@@ -1,4 +1,3 @@
-
 public class Secret {
 
 	private String digits;
@@ -28,7 +27,24 @@ public class Secret {
 	}
 
 	private String removeDuplicates(String digits) {
-		return digits.chars().distinct().toString();
+		char[] digitsAsChar = digits.toCharArray();
+		String uniqueDigits = "";
+		boolean duplicateFound = false;
+
+		for (int i = 0; i < digits.length(); i++ ) {
+			for (int j = i + 1; j < digits.length(); j++ ) {
+				if (digitsAsChar[i] == digitsAsChar[j]) {
+					duplicateFound = true;
+				}
+			}
+			if (!duplicateFound) {
+				uniqueDigits += digitsAsChar[i];
+			}
+			duplicateFound = false;
+		}
+
+
+		return uniqueDigits;
 	}
 
 	private String formatDigitsToSetLength(String digits) {
