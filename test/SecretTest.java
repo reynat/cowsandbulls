@@ -52,4 +52,11 @@ public class SecretTest {
         Secret actual = new Secret("123a");
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void cannotMakeSecretWithDuplicates() {
+        Secret expected = new Secret("1230");
+        Secret actual = new Secret("1233");
+        assertEquals(expected, actual);
+    }
 }
