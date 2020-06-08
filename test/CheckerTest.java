@@ -21,7 +21,7 @@ public class CheckerTest {
         Checker.Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.bulls;
-        assertEquals(actual, 4);
+        assertEquals(4, actual);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class CheckerTest {
         Checker.Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.bulls;
-        assertEquals(actual, 1);
+        assertEquals(1, actual);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class CheckerTest {
         Checker.Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.bulls;
-        assertEquals(actual, 2);
+        assertEquals(2, actual);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class CheckerTest {
         Checker.Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.cows;
-        assertEquals(actual, 1);
+        assertEquals(1, actual);
     }    
     
     @Test
@@ -65,7 +65,7 @@ public class CheckerTest {
         Checker.Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.cows;
-        assertEquals(actual, 2);
+        assertEquals(2, actual);
     }
     
     @Test
@@ -76,7 +76,7 @@ public class CheckerTest {
         Checker.Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.cows;
-        assertEquals(actual, 3);
+        assertEquals(3, actual);
     }
 
 }

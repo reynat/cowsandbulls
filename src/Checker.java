@@ -17,13 +17,14 @@ public class Checker {
     }
 
     public Feedback giveFeedback(Secret guess) {
-        if (secret.equals(guess)) {
-            return new Checker.Feedback(0, 4);
+        int numBulls = 0; 
+        int numCows = 0;
+
+        if (guess.equals(secret)) {
+            numBulls = 4;
         } else {
             char[] guessChar = guess.getDigits().toCharArray();
             char[] secretChar = secret.getDigits().toCharArray();
-            int numBulls = 0; 
-            int numCows = 0;
             
             for (int i = 0; i < guessChar.length; i++ ) {
                 if (guessChar[i] == secretChar[i]) {
@@ -32,8 +33,9 @@ public class Checker {
                     numCows++;
                 }
             }
-
-            return new Checker.Feedback(numCows, numBulls);
         }
+
+        return new Checker.Feedback(numCows, numBulls);
+
     }
 }
