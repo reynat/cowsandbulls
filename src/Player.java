@@ -1,12 +1,14 @@
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Player {
 
-    public Secret makeASecret() {
+    public Secret makeASecret(InputStream input, PrintStream output) {
         // Get user input
-        Scanner keyboard = new Scanner(System.in);
+        Scanner keyboard = new Scanner(input);
 
-        System.out.println("Please enter a 4 digit guess: ");
+        output.print("Please enter a 4 digit guess: ");
         
         String userInput = keyboard.next();
         Secret guess = new Secret(userInput);

@@ -2,6 +2,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import org.junit.Test;
 
@@ -19,12 +21,16 @@ public class PlayerTest {
         Player newPlayer = new Player();
         String userInput = "1234";
         ByteArrayInputStream inputBytes = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(inputBytes);
+
+        String expectedGameOutput = "Please enter a 4 digit guess: ";
+        ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
+        PrintStream actualGameOutput = new PrintStream(outputBytes);
 
         Secret expected = new Secret("1234");
-        Secret actual = newPlayer.makeASecret();
+        Secret actual = newPlayer.makeASecret(inputBytes, actualGameOutput);
 
         assertEquals(expected, actual);
+        assertEquals(expectedGameOutput, outputBytes.toString());
     }
 
 }
