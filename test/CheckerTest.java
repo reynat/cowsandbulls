@@ -18,7 +18,7 @@ public class CheckerTest {
         Secret secret = new Secret("1234");
         Secret guess = new Secret("1234");
         Checker newChecker = new Checker(secret);
-        Checker.Feedback feedback = newChecker.giveFeedback(guess);
+        Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.bulls;
         assertEquals(4, actual);
@@ -29,7 +29,7 @@ public class CheckerTest {
         Secret secret = new Secret("1234");
         Secret guess = new Secret("1567");
         Checker newChecker = new Checker(secret);
-        Checker.Feedback feedback = newChecker.giveFeedback(guess);
+        Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.bulls;
         assertEquals(1, actual);
@@ -40,7 +40,7 @@ public class CheckerTest {
         Secret secret = new Secret("1234");
         Secret guess = new Secret("1267");
         Checker newChecker = new Checker(secret);
-        Checker.Feedback feedback = newChecker.giveFeedback(guess);
+        Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.bulls;
         assertEquals(2, actual);
@@ -51,7 +51,7 @@ public class CheckerTest {
         Secret secret = new Secret("1234");
         Secret guess = new Secret("1245");
         Checker newChecker = new Checker(secret);
-        Checker.Feedback feedback = newChecker.giveFeedback(guess);
+        Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.cows;
         assertEquals(1, actual);
@@ -62,7 +62,7 @@ public class CheckerTest {
         Secret secret = new Secret("1234");
         Secret guess = new Secret("1542");
         Checker newChecker = new Checker(secret);
-        Checker.Feedback feedback = newChecker.giveFeedback(guess);
+        Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.cows;
         assertEquals(2, actual);
@@ -73,7 +73,7 @@ public class CheckerTest {
         Secret secret = new Secret("1234");
         Secret guess = new Secret("5423");
         Checker newChecker = new Checker(secret);
-        Checker.Feedback feedback = newChecker.giveFeedback(guess);
+        Feedback feedback = newChecker.giveFeedback(guess);
 
         int actual = feedback.cows;
         assertEquals(3, actual);

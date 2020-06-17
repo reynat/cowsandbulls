@@ -2,16 +2,6 @@ public class Checker {
     
     private Secret secret;
 
-    class Feedback {
-        public int cows;
-        public int bulls;
-
-        public Feedback(int cows, int bulls) {
-            this.cows = cows;
-            this.bulls = bulls;
-        }
-    }
-
     public Checker (Secret secret) {
         this.secret = secret;
     }
@@ -35,7 +25,7 @@ public class Checker {
             }
         }
 
-        return new Checker.Feedback(numCows, numBulls);
+        return new Feedback(numCows, numBulls);
 
     }
 }
