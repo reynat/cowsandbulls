@@ -43,17 +43,32 @@ public class Secret {
 			duplicateFound = false;
 		}
 
-
 		return uniqueDigits;
 	}
 
 	private String formatDigitsToSetLength(String digits) {
 		if (digits.length() < LENGTH_OF_DIGITS) {
-			return String.format("%-" + Integer.toString(LENGTH_OF_DIGITS) + "s", digits).replace(' ', '0');
+			return padSecretWithDigits(digits);
 		}
 		
 		if (digits.length() > LENGTH_OF_DIGITS) {
 			return digits.substring(0, LENGTH_OF_DIGITS);
+		}
+
+		return digits;
+	}
+
+	private String padSecretWithDigits(String digits) {
+		int paddingLength = LENGTH_OF_DIGITS - digits.length();
+		int nextDigit = 0; 
+
+		while (paddingLength > 0) {
+			String nextDigitAsString = String.valueOf(nextDigit);
+			if (!digits.contains(nextDigitAsString)) {
+				digits += nextDigit;
+				paddingLength --;
+			}
+			nextDigit++;
 		}
 
 		return digits;

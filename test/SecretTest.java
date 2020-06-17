@@ -54,9 +54,23 @@ public class SecretTest {
     }
 
     @Test
-    public void cannotMakeSecretWithDuplicates() {
+    public void cannotMakeSecretWith1Duplicate() {
         Secret expected = new Secret("1230");
         Secret actual = new Secret("1233");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void cannotMakeSecretWith2Duplicates() {
+        Secret expected = new Secret("1302");
+        Secret actual = new Secret("1333");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void cannotMakeSecretWith3Duplicates() {
+        Secret expected = new Secret("0123");
+        Secret actual = new Secret("0000");
         assertEquals(expected, actual);
     }
 }
