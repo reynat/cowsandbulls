@@ -11,7 +11,7 @@ public class Checker {
         int numCows = 0;
 
         if (guess.equals(secret)) {
-            numBulls = 4;
+            numBulls = secret.getDigits().length();
         } else {
             char[] guessChar = guess.getDigits().toCharArray();
             char[] secretChar = secret.getDigits().toCharArray();

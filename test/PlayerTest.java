@@ -22,14 +22,14 @@ public class PlayerTest {
         String userInput = "1234";
         ByteArrayInputStream inputBytes = new ByteArrayInputStream(userInput.getBytes());
 
-        String expectedGameOutput = "Please enter a 4 digit guess: ";
+        String expectedGameOutput = "Please enter a 4 digit guess: You guessed 1234\n";
         ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
         PrintStream actualGameOutput = new PrintStream(outputBytes);
 
-        Secret expected = new Secret("1234");
-        Secret actual = newPlayer.makeASecret(inputBytes, actualGameOutput);
+        Secret expectedSecret = new Secret("1234");
+        Secret actualSecret = newPlayer.makeASecret(inputBytes, actualGameOutput);
 
-        assertEquals(expected, actual);
+        assertEquals(expectedSecret, actualSecret);
         assertEquals(expectedGameOutput, outputBytes.toString());
     }
 

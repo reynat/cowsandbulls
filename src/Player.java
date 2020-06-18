@@ -12,8 +12,9 @@ public class Player {
         
         String userInput = keyboard.next();
         Secret guess = new Secret(userInput);
+		output.println("You guessed " + guess.getDigits());
 
-        keyboard.close();
+        // keyboard.close();
 
         return guess;
     }

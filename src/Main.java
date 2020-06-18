@@ -15,12 +15,15 @@ public class Main {
 		Player player = new Player();
 		
 		Secret guess = player.makeASecret(userInput, gameOutput);
-		gameOutput.println("You guessed " + guess.getDigits());
 
-		Feedback feedback = checker.giveFeedback(guess);
-		gameOutput.println("RESULT: " + feedback.bulls + " BULL and " + feedback.cows + " COW");
+		while (!secret.equals(guess)) {
+			Feedback feedback = checker.giveFeedback(guess);
+			gameOutput.println("RESULT: " + feedback.bulls + " BULL and " + feedback.cows + " COW");
 
+		 	guess = player.makeASecret(userInput, gameOutput);
+		}
 
+		gameOutput.println("Congratulations! You guessed the secret!");
 	}
 
 	private static Secret generateGameSecret() {
