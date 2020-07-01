@@ -1,27 +1,27 @@
-import java.io.PrintStream;
 import java.util.Random;
 
 public class Main {
 
 	public static void main(String[] args) {
-		PrintStream gameOutput = System.out;
 		Reader reader = new Reader();
+		Printer printer = new Printer();
 
 		Secret secret = generateGameSecret();
-		gameOutput.println("The secret is " + secret.getDigits());
+		printer.printInstruction("The secret is " + secret.getDigits());
 
 		Checker checker = new Checker(secret);
 		
+		printer.printInstruction("Please enter a 4 digit guess: ");
 		Secret guess = reader.readUserSecret();
 
 		while (!secret.equals(guess)) {
 			Feedback feedback = checker.giveFeedback(guess);
-			gameOutput.println("RESULT: " + feedback.bulls + " BULL and " + feedback.cows + " COW");
-
+			printer.printFeedback(feedback);
+			printer.printInstruction("Please enter a 4 digit guess: ");
 			guess = reader.readUserSecret();
 		}
 
-		gameOutput.println("Congratulations! You guessed the secret!");
+		printer.printInstruction("Congratulations! You guessed the secret!");
 	}
 
 	private static Secret generateGameSecret() {
