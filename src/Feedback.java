@@ -1,8 +1,8 @@
 
 
 public class Feedback {
-    public int cows;
-    public int bulls;
+    public final int cows;
+    public final int bulls;
 
     public Feedback(int cows, int bulls) {
         this.cows = cows;
