@@ -14,7 +14,7 @@ public class Main {
 		printer.printInstruction("Please enter a 4 digit guess: ");
 		Secret guess = reader.readUserSecret();
 
-		while (!secret.equals(guess)) {
+		while (!gameOver(guess, secret)) {
 			Feedback feedback = checker.giveFeedback(guess);
 			printer.printFeedback(feedback);
 			printer.printInstruction("Please enter a 4 digit guess: ");
@@ -28,5 +28,9 @@ public class Main {
 		Random secretGenerator = new Random();
 		int secretInt = secretGenerator.nextInt();
 		return new Secret(String.valueOf(secretInt));
+	}
+
+	private static boolean gameOver(Secret guess, Secret secret) {
+		return secret.equals(guess); 
 	}
 }
