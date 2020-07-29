@@ -4,24 +4,24 @@ public class Main {
 
 	public static void main(String[] args) {
 		Reader reader = new Reader();
-		Printer printer = new Printer();
+		Writer<String> writer = new StringWriter();
 
 		Secret secret = generateGameSecret();
-		printer.printInstruction("The secret is " + secret.getDigits());
 
 		Checker checker = new Checker(secret);
 		
-		printer.printInstruction("Please enter a 4 digit guess: ");
+		writer.print(Formatter.prompt());
+
 		Secret guess = reader.readUserSecret();
 
 		while (!gameOver(guess, secret)) {
 			Feedback feedback = checker.giveFeedback(guess);
-			printer.printFeedback(feedback);
-			printer.printInstruction("Please enter a 4 digit guess: ");
+			writer.print(Formatter.getFeedback(feedback));
+			writer.print(Formatter.prompt());
 			guess = reader.readUserSecret();
 		}
 
-		printer.printInstruction("Congratulations! You guessed the secret!");
+		writer.print(Formatter.getGameOver());
 	}
 
 	private static Secret generateGameSecret() {
