@@ -9,7 +9,7 @@ public class Reader {
     }
 
     public Secret readUserSecret() {
-        String userInput = keyboard.next();
+        String userInput = keyboard.nextLine();
         Secret guess = new Secret(userInput);
 
         return guess;

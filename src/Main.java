@@ -1,15 +1,18 @@
-import java.util.Random;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class Main {
+
+	private static Secret secret; 
 
 	public static void main(String[] args) {
 		Reader reader = new Reader();
 		Writer<String> writer = new StringWriter();
-
-		Secret secret = generateGameSecret();
+		initialiseGameSecret();
 
 		Checker checker = new Checker(secret);
-		
+
 		writer.print(Formatter.prompt());
 
 		Secret guess = reader.readUserSecret();
@@ -24,10 +27,18 @@ public class Main {
 		writer.print(Formatter.getGameOver());
 	}
 
-	private static Secret generateGameSecret() {
-		Random secretGenerator = new Random();
-		int secretInt = secretGenerator.nextInt();
-		return new Secret(String.valueOf(secretInt));
+	private static void initialiseGameSecret() {
+		Properties config = new Properties();
+
+		try {
+			FileInputStream configFile = new FileInputStream("config.properties");
+			config.load(configFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		String secretType = config.getProperty("secretType");
+		secret = SecretFactory.createSecret(secretType);
 	}
 
 	private static boolean gameOver(Secret guess, Secret secret) {
